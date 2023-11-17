@@ -94,9 +94,10 @@ a {
 }
 
 .menu {
-	position: fixed;
-	top:40px;
-	right:25%;
+/*	position: fixed;*/
+	position: flex;
+	top:50px;
+	right:30%;
 	display: flex;
 	flex-flow: row wrap;
 	height:0px;
