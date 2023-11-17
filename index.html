@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Green chair</title>
+		<link rel="stylesheet" href="style4.css">
+		<link rel="icon" href="images/rita5.png">
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script><!-- I have linked to a jQuery CDN here so we can use jQuery in our document. -->
+
+
+
+<script>
+
+// I've rewrriten this code above in jQuery, so you can see how much shorter it is:
+$(document).ready( function() { // Wait until the document is ready.
+	$(".btn").click( function() { // When you click on class btn,
+		whatClass = $(this).attr("class");
+		whatClass = whatClass.replace('btn','');
+		whatClass = whatClass.replace('active','');
+		whatClass = whatClass.replace(' ','');
+		console.log(whatClass);
+
+		$(this).toggleClass("active"); // Toggle on or off the class active on the button you clicked.
+
+		var activeClasses = []; // Declare a new array called activeClasses.
+		$(".active").each( function() { // Begin a loop that runs through buttons that have been toggled to have the class active. It may be more than 1!
+			var thisClass = $(this).attr("class"); // Get the other classes of any button that also has the class active, and save this as a string called thisClass. 
+			thisClass = thisClass.replace('btn',''); // Remove the btn class from the string thisClass. We don't care about it. 
+			thisClass = thisClass.replace('active',''); // Also remove the active class from the string.
+			thisClass = thisClass.replaceAll(' ',''); // And lastly remove any empty spaces. This gives us a class like red or handdrawn, etc. 
+			activeClasses.push(thisClass); // Add this class to our array.
+		});
+
+		var activeClassesString = activeClasses.join("."); // Create a string out of our active classes, that we can use to target which projects to show.
+		$(".filterDiv").removeClass("show"); // Hide all projects
+		if(activeClassesString != '') {
+			$(".filterDiv."+activeClassesString).addClass("show");// Show projects with only our active classes combined.
+		}
+		
+		$(".homepage").click( function() {
+			$(".filterDiv").removeClass("show");
+			$(".btn").removeClass("active");
+		});
+
+		if(activeClasses.length > 0) {
+			$("h1").hide();
+		} else {
+			$("h1").show();
+		} 
+		console.log(activeClasses.length);
+
+		if(!$(".show").length) {
+			if($("h1").css('display') == 'block') {
+				$(".nothing-to-show").css({"display":"none"});	
+			} else {
+				$(".nothing-to-show").css({"display":"block"});	
+			}
+		} else {
+			$(".nothing-to-show").css({"display":"none"});
+		}
+
+	});
+
+//	$("img").click( function() {   //
+	//	$(this).toggleClass("larger"); //
+//	}); //
+
+});
+
+</script>
+	</head>
+	<body>
+
+<div>
+	  <button onClick="window.location.reload();" class="homepage"> <img style="width: 20%" src="images/rita4.png" id="imgrita"/></button>
+
+	  		<h1 class="home">My name is Rita Davis, I'm a graphic designer from Belo Horizonte (Brazil), currently living in Berlin (Germany) <br> MA degree at Estonian Academy of Arts (2021—2023) <br> 
+	  		You are welcome to browse through the filters and check some of the things I have been doing in past years. Email: ritadrvc@gmail.com <br> IG: @ritadavis</h1>
+</div>
+
+
+<div class="menu" id="myBtnContainer">
+  <button class="btn red">Red</button>
+  <button class="btn handdrawn">Handdrawn</button>
+  <button class="btn commisionedprojects">Comissioned projects</button>
+   <button class="btn scanner">Scanner</button>
+  <button class="btn ekagdma">EKA GD MA</button>
+  <button class="btn theater">Theater</button>
+  <button class="btn editorial">Editorial</button>
+  <button class="btn text">Text</button>
+  <button class="btn projector">Projector</button>
+  <button class="btn love">Love</button>
+  <button class="btn tightdeadline">Tight deadline</button>
+  <button class="btn collaboration">Collaboration</button>
+  <button class="btn brazil">Brazil</button>
+  <button class="btn personalprojects">Personal projects</button>
+  <button class="btn estonia">Estonia</button>
+  <button class="btn blackandwhite">Black and white</button>
+ <!-- <button class="btn all">All works</button> --->
+  <button class="btn allworks">All works</button>
+  <button class="btn food">Food</button>
+  <button class="btn cinema">Cinema</button>
+</div>
+
+    <!-- Project --->
+
+<div class="container">
+  	<div class="filterDiv handdrawn commisionedprojects theater collaboration brazil allworks all">
+			<div class="wrapper">
+				<img style="width: 30%" src="images/querver2.JPG"/>
+				<img style="width: 28%" src="images/querver15.JPG"/>
+				<img style="width: 30%" src="images/querver12.JPG"/><br>
+				<img style="width: 50%" src="images/querver14.JPG"/>
+				<img style="width: 45%" src="images/querver10.JPG"/>
+				<p><i><b>Quer ver, escuta (Want to see, listen)</b></i><br>During 1 week of immersion, in 2020, we created the visual identity of a play for the theater group “Grupo Galpão”, a theater company founded in 1982 in Belo Horizonte, Brazil, which proposes dialogues between poetry and theater. We held a workshop along with the actors, which resulted in 116 hand drawn graphic posters and also directed a photoshoot with the actors, exploring the scenes of the play. *Project in partnership with Filipe Lampejo and João Emediato.</p>
+			</div>
+		</div>
+
+    <!-- Project --->
+
+ <div class="filterDiv commisionedprojects theater tightdeadline collaboration brazil blackandwhite projector allworks all">
+			<img style="width: 45%" src="images/febre8.JPG"/>
+			<img style="width: 45%" src="images/febre5.JPG"/><br>
+			<img style="width: 45%" src="images/febre6.JPG"/>
+			<img style="width: 45%" src="images/febre7.JPG"/>
+			<p><i><b>FEBRE (Fever)</b></i><br>Some images of the visual identity process me and Filipe Lampejo did in early 2022 for a movie by the theater group "Grupo Galpão", a theater company founded in 1982 in Belo Horizonte, Brazil. The movie FEBRE (Fever) is directed by Márcio Abreu and written by Paulo André.</p>
+</div>
+
+    <!-- Project --->
+
+ <div class="filterDiv ekagdma cinema collaboration estonia projector allworks all">
+			<img style="width: 40%" src="images/movingcouch1.JPG"/>
+			<img style="width: 40%" src="images/movingcouch4.JPG"/>
+			<img style="width: 40%" src="images/movingcouch8.JPG"/>
+			<img style="width: 45%" src="images/movingcouch5.JPG"/><br>
+			<p><i><b>Moving Couch Cinema</b></i><br>is a series of movies screened in different spots, for different people, on different days, at different times. Curated by Björn Giesecke and Rita Davis. The project is part of DRAMA. DRAMA is a 1.3m2 exhibition space on a grainy wall inside the Estonian Academy of Arts, Tallinn. Initiated within the masters programme in Graphic Design, eka-gd-ma.ee. Taking things from the floor up onto the wall and calling it something, or to be more specific: a once defunct drawer in the hallway, 1.30 x 1 x 0.05 m, now rotated clockwise, lifted 0.9 m from the ground, screwed into the concrete wall, and introduced as an exhibition space called DRAMA.</p>
+</div>
+
+
+  <!-- Project --->
+
+<div class="filterDiv ekagdma editorial love estonia allworks all">
+			<img style="width: 40%" src="images/bootleg7.JPG"/>
+			<img style="width: 40%" src="images/bootleg9.JPG"/><br>
+			<img style="width: 30%" src="images/bootleg2.JPG"/>
+			<img style="width: 30%" src="images/bootleg4.JPG"/>
+			<img style="width: 30%" src="images/bootleg6.JPG"/>
+			<p><i><b>"A Lover's Discourse - Fragments" by Roland Barthes Bootleg</b></i><br>Designed in Berlin and printed in Tallinn. A5 size with cable tie binding</p>
+</div>
+
+  <!-- Project --->
+
+<div class="filterDiv handdrawn ekagdma estonia cinema allworks all">
+			<img style="width: 60%" src="images/inferninho5.JPG"/><br>
+			<img style="width: 20%" src="images/inferninho2.JPG"/>
+			<img style="width: 24%" src="images/inferninho4.JPG"/>
+	
+			<p><i><b>INFERNINHO (My Own Private Hell)</b></i><br>Poster for the screening of the movie 𝕴𝖓𝖋𝖊𝖗𝖓𝖎𝖓𝖍𝖔 directed by Guto Parente and Pedro Diógenes (Ceará, Brazil 2018). Handdrawn in A1 size paper in Berlin, 2022.</p>
+</div>
+
+  <!-- Project --->
+
+<div class="filterDiv red ekagdma editorial love estonia allworks all">
+			<img style="width: 35%" src="images/inbetween2.JPG"/>
+			<img style="width: 35%" src="images/inbetween4.JPG"/><br>
+			<img style="width: 35%" src="images/inbetween5.JPG"/>
+			<img style="width: 35%" src="images/inbetween6.JPG"/>
+			<p><i><b>In-between relationships: Initial Thoughts About Being Together</b></i><br>The publication "In-between relationships: Initial Thoughts About Being Together" was launched last semester at Lugemik Bookshop in Tallinn, Estonia. A short essay about relationships, friendship, invisible borders and affection. Reflections about subverting pre-determined ways of relating to each other and what can we encounter in "in-between" spaces. written and designed by me. risoprinted at EKA, 2021.</p>
+</div>
+
+  <!-- Project --->
+
+<div class="filterDiv personalprojects editorial brazil colorful allworks all">
+			<img style="width: 30%" src="images/karta12.JPG"/>
+			<img style="width: 30%" src="images/karta11.JPG"/>
+			<img style="width: 30%" src="images/karta13.JPG"/><br>
+			<img style="width: 60%" src="images/karta5.JPG"/><br>
+	
+			<p><i><b>Karta Manifesto del Amor-Amor en Portunhol Selvagem</b></i><br>This manifesto was made by Brazilian and Paraguayans artists reclaming that “Portunhol” (the mix of spanish and portuguese) should be the oficial language of the border region between countries. The PDF will be available online so that anyone can print and produce your own brochure at home, using color tapes for binding.</p> 
+</div>
+
+  <!-- Project --->
+
+<div class="filterDiv personalprojects editorial collaboration brazil allworks all">
+			<img style="width: 32%" src="images/gratificase7.JPG"/>
+			<img style="width: 30%" src="images/gratificase6.JPG"/>
+			<img style="width: 30%" src="images/gratificase5.JPG"/>
+			<img style="width: 30%" src="images/gratificase4.JPG"/>
+			<img style="width: 30%" src="images/gratificase3.JPG"/>
+			<img style="width: 30%" src="images/gratificase2.JPG"/>
+			<p><i><b>Reward to whoever finds me</b></i><br>My graduation project in my BA at Universidade Federal de Minas Gerais (UFMG) had great importance for my entrance in the publishing market. The book was developed in partnership with my grandmother, a militant from the 60’s against against the Brazilian military dictatorship, who wrote the texts, while I did the editorial design and collages. The book was published in 2018 in Belo Horizonte, Brazil.</p>
+</div>
+
+  <!-- Project --->
+
+<div class="filterDiv ekagdma collaboration estonia food allworks all">
+			<img style="width: 30%" src="images/sushi2.JPG"/>
+			<img style="width: 30%" src="images/sushi3.JPG"/>
+			<img style="width: 30%" src="images/sushi4.JPG"/>
+			<img style="width: 30%" src="images/sushi5.JPG"/>
+			<img style="width: 30%" src="images/sushi6.JPG"/>
+			<img style="width: 30%" src="images/sushi7.JPG"/>
+			<p><i><b>Sushi dinner</b></i><br>One of the best days of my semester. Cooking a sushi dinner and sitting on the clouds with the amazing crew @laura.pappa @general_enquiry @carlocanun @oliverlong_ @markjfoss @miam_iam @patrickzavadskis @axiatonal @gretathorkels (and also with the help of the 2nd years). Much love, thanks amigos! photos: @katarina_sarap</p>  
+</div>
+
+  <!-- Project --->
+
+<div class="filterDiv handdrawn ekagdma editorial collaboration estonia blackandwhite scanner allworks all">
+			<img style="width: 45%" src="images/newspaper3.JPG"/>
+			<img style="width: 45%" src="images/newspaper4.JPG"/>
+			<img style="width: 30%" src="images/newspaper6.JPG"/>
+			<img style="width: 28%" src="images/newspaper7.JPG"/>
+			<p><i><b>"I'm serious, I'm friendly, I'm funny"</b></i><br>is a journal that was produced collectively during the typography workshop with Jung-Lee and Josse Pyl in October 2021. My collaboration to the journal was inspired by the famous phrase by Pina Bausch: Dance, dance, otherwise we are lost. And also based in the performance "Clarabóia" by the brazilian dancer and choreographer Morena Nascimento. From that references, I printed some frames of the performance and scanned to create texture and movement.</p>
+</div>
+
+  <!-- Project --->
+
+<div class="filterDiv ekagdma estonia food allworks all">
+			<img style="width: 45%" src="images/healthkick1.JPG"/>
+			<img style="width: 45%" src="images/healthkick2.JPG"/><br>
+			<img style="width: 30%" src="images/healthkick5.JPG"/>
+			<img style="width: 30%" src="images/healthkick6.JPG"/> 
+			<p><i><b>Healthkick bar</b></i><br>For this project I produced seven different types of drinks (totaling 12 liters), inspired by the cover of Marcos Valle's "Estrelar" album, in their respective colors. As a starting point, consider a week in a far-away-almost-Russian land watered by countless sensory experiences from exhaustion to ecstasy. As a point of reference, a song by Marcos Valle, Estrelar (1993, Rio de Janeiro, Brazil). As a final point, a Healthkick bar happened on October 7th, 2021 at Lugemik Bookshop in Tallinn, Estonia.</p>
+</div>
+
+  <!-- Project --->
+
+<div class="filterDiv personalprojects collaboration brazil allworks all">
+			<img style="width: 20%" src="images/mascorona1.JPG"/>
+			<img style="width: 20%" src="images/mascorona2.JPG"/>
+			<img style="width: 20%" src="images/mascorona3.JPG"/>
+			<img style="width: 20%" src="images/mascorona4.JPG"/>
+			<img style="width: 20%" src="images/mascorona5.JPG"/>
+			<img style="width: 20%" src="images/mascorona6.JPG"/>
+			<img style="width: 20%" src="images/mascorona7.JPG"/>
+			<img style="width: 20%" src="images/mascorona8.JPG"/>
+			<img style="width: 20%" src="images/mascorona9.JPG"/>
+			<img style="width: 20%" src="images/mascorona10.JPG"/>
+			<img style="width: 20%" src="images/mascorona11.JPG"/>
+			<img style="width: 20%" src="images/mascorona12.JPG"/>
+			<img style="width: 20%" src="images/mascorona13.JPG"/>
+			<img style="width: 20%" src="images/mascorona14.JPG"/>
+		
+			<p><i><b>Mascorona project</b></i><br>“Mascorona — masks for the new era” is a artistic curatorial project that started at the beginning of the pandemic on Instagram. We started producing homemade masks and challenging our friends to do the same. Currently, we’ve curated more than 230 masks and more than 7 thousand people follow the project (from Brazil and other countries). *in partnership with Filipe Lampejo and João Emediato.</p>
+</div>
+
+  <!-- Project --->
+
+<div class="filterDiv personalprojects collaboration food allworks all">
+			<img style="width: 20%" src="images/ayami1.JPG"/>
+		
+			<p><i><b>Kitchen poster</b></i><br>This poster (50x60cm) was made in collaboration with the japanese artist and chef, Ayami Awazuhara, who is based in Berlin.</p>
+</div>
+
+  <!-- Project --->
+
+<div class="filterDiv personalprojects text estonia allworks all">
+			
+			<p><b>Water Part 1: KALEVSPA<br></b>(written in December 2021 in Tallinn, Estonia)</i>
+
+			<p>The moment I decided to float in the warmer pool, a huge bang followed by a shiver rang in my ear, inside the water. For two seconds I was sure that a bomb had hit the roof of Kalevspa and right there I would die. Completely alone and without translation. Indecipherable. I wondered how the news would reach other people's ears: she died in the pool, but not drowned. I almost died of fright. After the two terrified seconds passed, the old man swimming besides me smiled, satisfied, with the pool's whirlpool running at high intensity.</p>
+
+			<p>I keep thinking about death without translation. What would it be like to die in Estonian? Dying, in Estonian, is surma. If you hide the r, it becomes suma, which in Portuguese means to disappear. I would disappear even before I existed. I don't exist in Estonian. Even now that the bomb didn't fall on our heads and I stand here in blood, flesh and bone, I've disappeared. I'm like the baby that swims next to me. We dive in sync. He looks at people like me, curious, trying to decipher the exacerbated movements that shakes the water we are all in. Since we cannot trust our ears, we hear the voices like a symphony. We looked at each other with compassion, we're the only ones here who didn't react to the lifeguard joke, which drew a hearty laugh from people around him.</p>
+
+			<p>The baby and I exist, but as two bodies that occupy a space in silence. Staggering bodies. Or floating bodies. He's the one who understands me the most in this pool. We dive in sync once more. Underwater I remember that sometimes I pretend to exist in Estonian. A week ago, in a Bolt ride, I used all my social tricks — which include complex head movements, specific choreography with eyebrows and some onomatopoeias. All this together with the three words from my Estonian repertoire - Tere, aitäh, ei. For fifteen minutes I was someone else in a language that is not mine. But as soon as I got out of the car, I died again, without even finding out who I was.</p>
+
+			<p>I return to the surface. The baby is soon carried away in his mother's arms. We looked at each other one last time, now as accomplices. We will remain silent. And if the bomb fell now, we would die like that, as accomplices. We would die without translation, honoring the silence that also composes the symphony.</p>
+</div>
+
+  <!-- Project --->
+
+<div class="filterDiv personalprojects text estonia allworks all">
+			
+			<p><b>Water Part 2: Bathtub<br></b>(written in January 2022 in Berlin, Germany)</p>
+
+			<p>In the water again. This time, immersed in a bathtub of an apartment I barely know. In a city I barely know. The city is different now, but it still feels strange. I feel like an embryo, submerged in hot water and in a restricted space. Before turning the tap on, I send a message to a friend: “Is it bad to use the bathtub two days in a row?”. She answers no. So I dare this aquatic adventure once more. I light some candles and realize the water is too hot. Impatiently, I wait.</p>
+
+			<p>I think about why water has been an inspiring subject. Do I feel connected to people who are far away through it? Maybe water is the right place for me. My amniotic fluid. Water is water everywhere. A swimming pool or a bathtub are always the same. But not the buildings, not the streets, not the people. When I walk on the streets I don't remember anything, I have no memories of this place. I fight to be born again, again, making up my own memories, alone. Because I walk the streets alone and so the memories are mine and mine alone.</p>
+
+			<p>Yesterday I watched the documentary Paixão de JL about the life and work of the artist from Ceará (Brazil), José Leonilson. Some of his dreams, which he narrates on the tape recorder, take place in the water. For Leonilson, water was a passage, and he asks in one of his drawings: “Ocean, will you accept me?” I ask the same question to this strange city. Accept me?</p>
+
+			<p>My grandmother says she wants to be cremated and thrown into the sea. As I write this statement I wonder if this is really your will or was it a memory I created. She always liked to see the sea. At New Year's Eve parties, her request was always the same. She would call me and say, “Jump the seven ripples in the sea for me.” And so I did, like a faithful squire. And I felt close to her. When my grandmother dies I'm going to move closer to the sea, so I'll wake up in the morning and dive into the ocean that she is. I will feel every particle that dissolved in the water touch my skin. She will be, once again, an embryo, and we will be closer than ever.</p>
+</div>
+
+  <!-- Project --->
+
+<div class="filterDiv personalprojects text estonia allworks all">
+			
+			<p><b>Aurora<br></b>(written in December 2021 in Tallinn, Estonia)</p>
+
+			<p><i>Fuck. The result was positive. What the fuck. I just can’t. At least is not Covid. Oh my god. It’s worse than Covid. It’s a pregnancy test. I have no fucking idea. Oh, God. I might buy another one. Yes. Probably it was a false positive. The margin of error must be huge. Wait. No, it’s not. Fuck. Someone told me that one time that it is 99% right. Jesus Christ. 99%, really? Pharmacy.</i> While turbulent thoughts still roam in my head I run to the next 24h Apotheka, not far from my apartment at Freedom Square in Tallinn, Estonia. It’s already late and I can’t enter the store, so the attendant comes to the door and asks: “Kuidas ma saan aidata?” <i>Where am I again?</i>  At this moment I’ve just lost all the words in whatever language that I used to know at some point. The lady at the pharmacy is staring at me. <i>It’s fucking cold outside.</i> “How can I help you?” she tries now in English. “One pregnancy test, please”, I reply. She couldn’t help making a pity face while taking my 9 euros for the test. <i>I don’t really blame you.</i> “Have a nice evening and good luck” she says, politely. It’s Monday, December 6th, and I’m on my way back home for another pee on a stick. The street is empty and the snow is so dense that everything seems to be in slow motion and I can hear my heart as if it was on the city speaker. The beats are pounding a bit out of step.</p>
+
+			<p>I get back in the apartment and no one is there. I run to the bathroom and sit on the toilet. My bladder seems to sense my unrest and refuses to provide a measly drop of pee. <i>Should have bought some orange juice like in the movies.</i> Suddenly Juno’s soundtrack starts playing in my head and I’m back in 2007. If I was a flower growing wild and free / All I'd want is you to be my sweet honey bee / And if I was a tree growing tall and green / All I'd want is you to shade me and be my leaves. The test is on the bathroom counter. <i>How old was Juno in the movie?</i> I google it on my phone and there it is, she was 16-years-old. I’m 28. <i>Not bad then.</i> The test is still on the bathroom counter. Breathe. I take it. But I don’t dare to open it. Just can’t. My instinct is to throw it in the trash, crawl into bed, and never come out again. Or I mean, maybe just in 9 months to go to a hospital. <i>How did I ended up here?</i> I feel like I need to speak to someone. Arthur. Yes, my ex-boyfriend Arthur, who I stayed with for six years and was supposed to be the father of my children. We actually chose some baby names together. <i>Can I still use the names we’ve chosen?</i> They were really cool names. <i>Hopefully he won’t use them as well. I should ask.</i> I take my cellphone and start writing: “Arthur, I have news”. <i>Maybe I should add “bad” news or he might think I got a job or something.</i> Deleted. I try again, more straight forward this time.</p>
+
+			<p>Rita (23h14): Arthur, I might be pregnant.<br>
+			Arthur (23h35): YOU ARE KIDDING ME. HOW COME?<br>
+			Rita (23h37): Just did a pharmacy test.<br>
+			Arthur (23h37): But it has been months since you had sex, no?<br>
+			Rita (23h39): Actually I had two dates some weeks ago. One with this Estonian guy from my building and the other one with a Brazilian guy I met on Instagram. Both were crazy bad by the way.<br>
+			Arthur (23h39): Tell me you used a condom.<br>
+			Rita (23h40): Kind of.<br>
+			Arthur (23h42): Oh, fuck. Wait, you still have the IUD right?<br>
+			Rita (23h44): Yeah, but I'm scared it got out of place. I had some weird cramps the last few weeks.<br>
+			Arthur (23h44): Go to the doctor, do a real test for God’s sake!<br>
+			Rita (23h45): I just bought another test at the pharmacy. What if it's positive again?<br>
+			Arthur (23h45): You are in Europe. We’ll figure it out!<br>
+			Rita (23h47): WHAT SHOULD I DO?<br>
+			Arthur (23h47): You’ll have to decide.<br>
+			Rita (23h48): Please don’t tell anyone.<br>
+			Arthur (23h48): Of course! Oh God, I’m shivering here.<br>
+			Rita (23h53): Should I talk to the two guys?<br>
+			Arthur (23h53): No! Wait for the second test.<br>
+			Rita (23h55): Ok. I'm pretty sure I don't want any of them as the father.<br>
+			Arthur (23h55): It’s ok, you are in Europe. You have options.<br>
+			Rita (23h56): I’m almost 30, I don’t think I want to abort.<br>
+			Arthur (23h58): Ok, you have a lot of people in your life to support this decision. You can keep the baby. I can be the ex-almost-future-but-not-really-dad.<br>
+			Rita (23h58): Oh my God.<br>
+			Arthur (00h01): Where are you now?<br>
+			Rita (00h03): Home. By myself.<br>
+			Arthur (00h04): How are you feeling?<br>
+			Rita (00h05): Nauseated.<br>
+			Arthur (00h07): I mean, emotionally.<br>
+			Rita (00h10): Fucked.</p>
+
+			<p>I put my phone on the bathroom counter and open the test. <i>Ok. Time to pee.</i> My hands are shaking and Juno’s soundtrack still plays in loop in the back of my head. The american country style harmonica follows the lyrics in an annoyingly cheerful way. All I want is you, will you be my bride / Take me by the hand and stand by my side / All I want is you, will you stay with me? / Hold me in your arms and sway me like the sea. The stick is finally wet. Now I wait for 5 minutes. I take my cellphone again.</p>
+
+			<p>Rita (00h12): Hey, will you still use our names for your babies?<br>
+</div>
+
+  <!-- Project --->
+
+<div class="filterDiv ekagdma text estonia allworks all">
+			
+			<p><b>The Carrier Bag Story of Bumba-Boi<br></b>(written in October 2021 in Tallinn, Estonia)</p>
+
+			<p>What was the first tool ever invented by humankind? From common sense, you could think of knives and sharp objects designed to hunt and kill big mammoths a few millennia ago. Ursula Le Guin shared her thoughts with us in her The Carrier Bag Theory of Fiction essay that this common sense was very decisive to formulate our understanding of narrative through generations. Story and history has been told by those who were actively using those objects and, as Ursula calls, that is the The killer story. The story of destruction, the story of power, of conflict, the story that has a hero and a defeat. A fundamentally masculine phallic version of reality.</p>
+
+			<p>Differing from this though the author shares that the first tool ever invented was actually a bag.<br>
+			A bag, a sack, or some container to hold something. Plus, how did you get more than one stomachful and one handful home? People needed to carry stuff from one place to another and that hasn't been in the spotlight. As you can imagine, a story of a mammoth spurting blood attracted more attentive looks than a seed being harvested. Before the tool that forces energy outward, we made the tool that brings energy home, she completed. So, how can we create other ways to frame our narrative? How can we carry our stories? Le Guin invites us to think about the untold. About the non-linear path that guides us along different characters and connects us to other stories. To think about the discourse not as a resolution but as a continuing process that emerges from a communal and cooperative place and gives it space to the unexpected.</p>
+
+			<p>Now I invite you to experience The Carrier Bag Story of Bumba-Boi. Bumba-boi is a living, mysterious and complex cultural manifestation from the northeast of Brazil that revolves around an enchanted Ox and celebrates community life, religious beliefs and profane pleasures through art. It also fights the colonial capitalist system we live in by creating possible worlds for a people's existence and resistance.</p>
+
+			<p>This story has been lived and narrated since the beginning of the 18th century and now it's been shared one more time, here in Estonia, in a different format, through different layers that will encourage you to access some of the mysteries of the enchanted Ox.Every song lyric, every festivity within popular culture has a narrative. And the story behind it is filled with memories of past times, religious beliefs, myths, and there is also a lot to do with the relationship between man and nature. The narrative comes from another context, not from a domination bias, but from acknowledging the environment that is around you and interacting with different subjects.</p>
+
+			<p>Bumba-boi is home for many characters. They act, they dance, they play, they sing about the daily life of a people, of a place. They prepare food, costumes and the festivities while reflecting about their reality.It becomes a cycle, they sing and celebrate their community life and the stories of their ancestrals, and that gives them strength to keep going and to keep creating new narratives. The dialogue in popular culture happens like this, on the margins, on the periphery of traditional knowledge, on being together. That's the way they have been writing their stories for years and years.</p>
+
+			<p>The Bumba-boi tradition symbolizes the cycle of life. Each year, he is born, he gets baptized and he dies. The community falls in love with the character of the Ox year by year. The Ox comes to life during the festivities and by the end of each year the OX dies. He has to die. Everything has it's time. Everything has to die. And after that, the party gains even more strength and people celebrate that, after all, we are still alive.</p>
+</div>
+
+  <!-- Project --->
+  
+<div class="filterDiv ekagdma text love estonia allworks all">
+  	
+  		<p><b>«In-between» relationships: Initial Thoughts About Being Together<br></b> (written in December 2021 in Tallinn, Estonia)</b>
+
+		<p>John 15:12 <i>This is my command: Love each other as I have loved you.</i></p>
+
+		<p>Now and then, people miss opportunities to live good and pleasant affective experiences with others around them. Experiences that are «in-between». Experiences that have no stipulated space — ones that inhabit the vacuum between the set-up relations that we are most familiar with: friendship, dating, and marriage. We enclose ourselves in molds of relationships that were constructed a long time before we arrived in this world, making it difficult to realize that we could be exploring different ways of being with each other. We could be updating these molds to our present time.</p>
+
+		<p>When some chances to relate emotionally arise in spaces that slip away from predetermined practices, one doesn’t know how to deal with it. One doesn’t know how to react, how to manage their emotions. An apprehension takes over and also the feeling of being threatened by the presence of an outsider, entering a supposedly unbreakable safe zone.</p>
+
+		<p>The invisible yet explicit «relationship manual» does not explain how to deal with feelings of affection, desire, attraction, appreciation, tenderness — and you may also say love between people outside of an established relationship. Therefore, our instinct is to suppress those feelings, to run as fast as possible in the opposite direction. But, no matter how big or how honest the effort is to avoid them, the feelings persist. The energy that it takes for a person to escape from those unexpected circumstances instead of facing and reflecting on new possibilities to experience them is carried by doubts. The fear of the unknown, the fear of something that doesn’t even exist yet. Also, there is the discomfort of letting yourself be involved in a moment that could be considered «outside» the emotional perimeter one is expected to navigate on.</p>
+
+		<p>We are constantly living our lives as if we were player characters inside of a video game. It is as if we had a specific amount of happiness, pleasure, love to use during the game, and we could not exceed this threshold. This container of feelings, energy, attention, is also tied to specific groups of people. One part of it would be for friendships, a different part for family, and a huge part dedicated to loving relationships. And concerning this last part, the love container, we are not supposed to overflow it with other experiences that we wouldn’t know how to name or understand. We are supposed to restrain our emotions as if we weren’t able to multiply them, recreate them, transform them. As if our emotions were predictable, fixed. If they had a limit, or needed to be managed, quoted, ensured...</p>
+
+		<p>The question here is what would happen if we start analyzing and acknowledging different ways to relate to each other and what impact it would have on the way our society and our daily life are organized. The question is also why do we have several ways to build our relationships with others around us. We have so many different ways to live and experience friendship, work relations, family relations. Yet, when it comes to intimate relationships we tend to (and are taught to) follow a more rigid structure. Even in different contexts, which implies different lifestyles, different traditions in various aspects of our lives, we can see a lot of similarities concerning the agreements and dynamics within a couple’s relationship. Who benefits and who harms from these coincidences? What is this space «in-between»? What are we missing by avoiding it?</p>
+
+		<p>As Hannah Arendt emphasizes in her book «What is politics?»:</p>
+
+		<p><i>«The birthplace of freedom is never the interior of some man, not his will, not his thoughts or feelings, but the space between, which only appears where some join together and only subsists as long as they remain together.»</i></p>
+
+		<p>These tortuous spaces, sometimes wider, sometimes narrower, are where freedom arises. By enclosing ourselves in our family, in our apartments, in our relationships, we are ignoring them. A life in exteriority is a life willing to admit the difference and accept the new, the ephemeral, the strange. And by accepting these differences we can open our eyes to non-possessive and more healthy, diverse relationships.</p>
+
+		<p>Further, the work of the film director Yorgos Lanthimos explores a lot of dystopian realities, questioning what is «normal» and some patterns that we live as a society. His movie «The Lobster» sarcastically explores how we are suppressing these intermediate-spaces between us, and how the world has been built for us to live in couples. The movie shows us a kind of allegorical parable that involves us in the webs of thought about individuality and the society of relationships.</p>
+
+		<p>The story takes place in a near future in which the law prohibits people from being single. Any man or woman who is not in a relationship is arrested and sent to a hotel, where they have 45 days to find a partner. In the event they don’t find anyone, they are transformed into an animal of their own and released into the middle of the forest. By dramatizing and exaggerating a reality that exists, yet we are often not aware of the power it exerts over us, the movie makes us wonder how natural this two-people arrangement really is. How such a supposedly universal arrangement might not be the single option for everyone.</p>
+
+		<p>Regarding this arrangement, one interesting perspective is from the author Brigitte Vassalo, who clearly explains the meaning of monogamy and how it controls our social dynamics in the following transcript:</p>
+
+		<p><i>«Monogamy is not a practice. It is a system. But what is a system? The way I explain this issue is through the metaphor of a clock. If we ask ourselves what time is, most will refer to seconds, minutes, hours, years, the calendar, the clock, etc. However, neither the minutes nor the calendar nor the clock are really time. These representations of time are part of the system, of the machine, that we invented so that we could codify something, which on one hand is totally subjective and intangible. When I say that time is subjective, I mean that, for example, some days go by very quickly and other days very slowly. Some might say that this is just a perception, because every day has exactly 24 hours. But no, the watch says that 24 hours have passed, but our perception can be very different. What happens with systems is that they end up replacing what is represented by its representation. The clock, which is a system that we created to divide time, becomes time itself. And we can no longer think about time without building our reasoning through the idea of ​​the clock.»</i></p>
+
+		<p>What is interesting about Brigite Vassallo’s statement is that the same happens with love. We look at love through the lens of the monogamy system and we can’t separate it anymore. Love, which is an abstract, subjective thing, has been codified through the system, just like time and the clock. As she says, «Nowadays, when we talk about love, we are often talking about a concrete form of love, which passes through a concrete form of an exclusive configuration of two people.»5, but love itself is part of the world of emotions, which is not so simple to codify.</p>
+
+		<p>Considering that monogamy is a system that was imposed on us, it not only concerns the intimate relationship of a couple. It also influences and shapes all the social bonds that are around it. Therefore, looking at new ways of relating is also a subversive act. The indigenous activist Geni Núnez reflects on the decolonization of affection and new possibilities that arise from there. Her work explores how coloniality does not allow concurrencies, and how the catechization of native peoples forced them to deny, refuse and reject their affective practices within each other. She has done extensive work about deconstructing hierarchies in our relationships and the boundaries between friendship and love. About that boundaries, Geni argues that:</p>
+
+		<p><i>«We know that there are many friendships where there is sex while there are many love bonds where there is not. If in practice we experience the fragility of this binarism between love and friendship in relationships, why do we still maintain them as good explanatory models? Deconstructing hierarchies is not just an exercise between the loves we have, but above all, about questioning the love x friendship division. We will not find the adequate medicine for our anxieties, until we reconstruct our questions. To deny the binary difference between love and friendship is not to say that it is all the same thing, on the contrary, the critique of binarism frees the difference from this simplistic cage and expands it to infinity.»</i></p>
+
+		<p>Where are the limits of friendship? How do we know when one thing ends and something else starts? The modern society we live in has extreme difficulty with facing the unnamed, the unknown, the unlabeled, the «something else». We are more and more used to building barriers between our homes, our cities, our countries. And so we build barriers in our relationships as well. We create all possible barriers to prevent us from encountering the unknown. The system is constantly dividing us in predetermined categories, because that makes it easier to label and control us.</p>
+
+		<p>We are each time more encouraged to multitask, to develop multi abilities to achieve a place in society. However, when we talk about emotion and feelings, we are not multitasking anymore. We follow patterns that were built from the idea of ​​barriers between people and also were built in favor of the maintenance of private property — such as marriage.Privileging a single relationship (dating, marriage)over all other social bonds we create around us, makes us emotionally dependent and also contributes to huge scars, insecurities, possessions and toxicities. Again, Brigitte Vasallo contributes with her perception:</p>
+
+		<p><i>«We were raised to think that only one form of love is valid, true, real, interesting and passionate. Monogamy is a system that organizes our affects on a social level, and also organizes them in a hierarchical way. At the top of the hierarchy are the couple, followed by family, friendship, then maybe neighbors and so on. So we have a very clear hierarchy. (...) I’m not analyzing this hierarchy and putting so much energy into it just for a postmodern issue, for a desire to break everything for the simple pleasure of breaking it. But these issues are directly related to femicide and to the love scars that we all have. Which has social consequences, has consequences in our lives. We are talking about a system that carries violence, which is why it is important to analyze in order to recreate it.»</i></p>
+
+		<p>Love and affection are present in all kinds of relationships, in different forms and overlapping through infinite layers. To experience this in a more honest way, we can change the dynamics within our relationships and reframe their hierarchy. Thus, realize that between marriage, friendship, dating, family, work relations and so on, there is a range of possibilities that intersect and multiply. Relationships that are nameless and that sometimes evaporate before it even begins.
+		We still have a lot to explore when we face in-between encounters. We have been forced to believe that we are not capable of creating new ways to be with each other, to love, to share intimacy with each other. But fortunately, our feelings are countless and uncontrollable. They are way more vast than the amount of strands in our hair or the amount of cells in our organism. Our emotions are changeable, moldable, flexible, they have the ability to expand and be whatever we want it to be.</p>
+</div>
+
+
+<div class="nothing-to-show">
+	 <!-- Project <img src="images/nothing.jpg"> --->
+	 <h2 class="error">No projects to show here (yet).<br>
+	 Let's collaborate? Contact me on: <br> ritadrvc@gmail.com or IG: @ritadavis</h1>
+</div>
+
+</body>
+</html>
+
