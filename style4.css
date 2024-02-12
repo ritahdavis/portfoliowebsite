@@ -97,7 +97,7 @@ a {
 /*	position: fixed;*/
 	position: flex;
 	top:50px;
-	right:30%;
+	right:5%;
 	display: flex;
 	flex-flow: row wrap;
 	height:0px;
