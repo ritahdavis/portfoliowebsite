@@ -20,6 +20,24 @@ h1 {
 	line-height: 60px;
 }
 
+a {
+	color: coral;
+}
+
+a.visited: {
+	color: coral;
+
+}
+
+a.hover: {
+	color: coral;
+}
+
+a.active: {
+	color: coral;
+}
+
+
 .error {
 	font-size: 58px;
 	color: #14a856;
