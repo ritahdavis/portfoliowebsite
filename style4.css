@@ -25,16 +25,16 @@ a {
 }
 
 a.visited: {
-	color: coral;
+	color: purple;
 
 }
 
 a.hover: {
-	color: coral;
+	color: black;
 }
 
 a.active: {
-	color: coral;
+	color: white;
 }
 
 
