@@ -1,6 +1,7 @@
 body {
 	background-color: #0000;
 	cursor: url('imagecursor.jpg'),auto;
+
 }
 
 p { 
@@ -172,7 +173,9 @@ img {
 
 
 
-
+.help  { 
+	cursor: help; 
+}
 
 
 
