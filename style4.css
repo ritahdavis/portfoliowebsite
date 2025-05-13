@@ -12,27 +12,9 @@ p {
 	color: #14a856;
 }
 
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.gallery a {
-  width: calc(33.333% - 10.66px);
-  text-align: center;
-}
-
-.gallery img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 8px;
-}
-
 
 h1 {
-	font-size: 48px;
+	font-size: 40px;
 	color: #14a856;
 	margin-left: 2%;
 	margin-right: 2%;
